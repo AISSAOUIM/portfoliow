@@ -1,10 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #fafafa;
-  --accent: #8b5cf6;
-  --accent-light: #a78bfa;
+  /* Fennecom-inspired palette */
+  --background: #080c0a;
+  --foreground: #f5f0e8;
+
+  /* Fennecom Green (arch) */
+  --green-dark: #123d22;
+  --green-mid: #1b5e37;
+  --green-bright: #2e9e54;
+
+  /* Fennecom Maroon/Wine (brand text) */
+  --maroon: #7a1540;
+  --maroon-light: #a01e56;
+
+  /* Fennecom Amber/Fox */
+  --amber: #f5941e;
+  --amber-light: #f9b14a;
+
+  /* Accent overrides */
+  --accent: #7a1540;
+  --accent-light: #f5941e;
 }
 
 @theme inline {
@@ -12,6 +28,13 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
+  --color-green-dark: var(--green-dark);
+  --color-green-mid: var(--green-mid);
+  --color-green-bright: var(--green-bright);
+  --color-maroon: var(--maroon);
+  --color-maroon-light: var(--maroon-light);
+  --color-amber: var(--amber);
+  --color-amber-light: var(--amber-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,32 +46,149 @@ body {
   overflow-x: hidden;
 }
 
-/* Glassmorphism utilities */
+/* ─── Background mesh ─── */
+.bg-mesh {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -20%, rgba(27,94,55,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(122,21,64,0.18) 0%, transparent 60%);
+}
+
+/* ─── Glassmorphism ─── */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .glass-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.2) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* ─── Nav ─── */
+.nav-blur {
+  background: rgba(8, 12, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-::-webkit-scrollbar-track {
-  background: #050505;
+
+/* ─── Gradient text ─── */
+.grad-text {
+  background: linear-gradient(135deg, #f5941e 0%, #f9b14a 40%, #a01e56 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+
+/* ─── Glowing border effect ─── */
+.glow-border-green {
+  box-shadow: 0 0 0 1px rgba(46,158,84,0.35), 0 8px 32px rgba(27,94,55,0.2);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.glow-border-maroon {
+  box-shadow: 0 0 0 1px rgba(122,21,64,0.4), 0 8px 32px rgba(122,21,64,0.15);
+}
+.glow-border-amber {
+  box-shadow: 0 0 0 1px rgba(245,148,30,0.4), 0 8px 32px rgba(245,148,30,0.12);
+}
+
+/* ─── Animated underline on hover ─── */
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f5941e, #7a1540);
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: #2e9e54; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #f5941e; }
+
+/* ─── Tag pill ─── */
+.tag-pill {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.2s ease;
+}
+.tag-pill:hover {
+  background: rgba(245,148,30,0.12);
+  border-color: rgba(245,148,30,0.35);
+  color: #f9b14a;
+}
+
+/* ─── Skill bar ─── */
+.skill-bar-track {
+  background: rgba(255,255,255,0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #1b5e37, #f5941e);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Float animation for hero image ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+/* ─── Pulse dot ─── */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+/* ─── Card image overlay ─── */
+.card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.card-img-wrap img {
+  transition: transform 0.5s ease;
+}
+.card-img-wrap:hover img { transform: scale(1.06); }
+.card-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,12,10,0.85) 0%, transparent 60%);
+}
+
+/* ─── Section title accent ─── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(46,158,84,0.12);
+  border: 1px solid rgba(46,158,84,0.25);
+  color: #2e9e54;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
