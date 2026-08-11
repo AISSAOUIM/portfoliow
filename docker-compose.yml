@@ -7,12 +7,19 @@ services:
       dockerfile: Dockerfile
     container_name: nextjs-portfolio
     restart: unless-stopped
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"
     environment:
       - NODE_ENV=production
     networks:
       - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`fennecom.com`) || Host(`www.fennecom.com`)"
+      - "traefik.http.routers.portfolio.entrypoints=http,https"
+      - "traefik.http.routers.portfolio.tls=true"
+      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
+      - "traefik.http.services.portfolio.loadbalancer.server.port=3000"
 
 networks:
   coolify:
