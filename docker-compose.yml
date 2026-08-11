@@ -7,14 +7,9 @@ services:
       dockerfile: Dockerfile
     container_name: nextjs-portfolio
     restart: unless-stopped
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     environment:
       - NODE_ENV=production
-    # Traefik labels so Coolify automatically routes fennecom.com to this container
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.portfolio.rule=Host(`fennecom.com`, `www.fennecom.com`)"
-      - "traefik.http.services.portfolio.loadbalancer.server.port=3000"
-      - "traefik.http.routers.portfolio.tls=true"
-      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
+    # Let Coolify + Traefik handle SSL termination and routing via its dashboard
+    # Set the domain to https://fennecom.com in the Coolify Application "Domains" setting
