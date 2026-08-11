@@ -129,14 +129,13 @@ export default function Home() {
       <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "nav-blur shadow-lg" : ""}`}>
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <button onClick={() => scrollTo("hero")} className="flex items-center gap-3 group">
-            <div className="relative w-9 h-9 rounded-xl overflow-hidden flex-shrink-0"
-              style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
-              <Image src="/fennecom.png" alt="Fennecom" fill style={{ objectFit: "contain" }} className="p-1" />
+          <button onClick={() => scrollTo("hero")} className="flex items-center gap-3 group transition-transform hover:scale-105">
+            <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-white/5 border border-white/10 group-hover:border-[#2e9e54]/50 transition-colors">
+              <Image src="/fennecom.png" alt="Fennecom" fill style={{ objectFit: "contain" }} className="p-1.5 drop-shadow-md" />
             </div>
-            <span className="font-bold text-lg tracking-tight">
-              <span className="grad-text">Fennecom</span>
-              <span className="text-white/40 font-light"> | Dev</span>
+            <span className="font-bold text-2xl tracking-tight">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2e9e54] via-[#f5941e] to-[#7a1540]">Fennecom</span>
+              <span className="text-white/40 font-light text-xl"> | Dev</span>
             </span>
           </button>
 
