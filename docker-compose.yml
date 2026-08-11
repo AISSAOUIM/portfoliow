@@ -11,5 +11,9 @@ services:
       - "3000"
     environment:
       - NODE_ENV=production
-    # Let Coolify + Traefik handle SSL termination and routing via its dashboard
-    # Set the domain to https://fennecom.com in the Coolify Application "Domains" setting
+    networks:
+      - coolify
+
+networks:
+  coolify:
+    external: true
