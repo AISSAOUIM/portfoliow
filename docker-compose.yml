@@ -11,7 +11,8 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-    # Traefik labels if Coolify uses Traefik (optional as Coolify manages this)
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.portfolio.rule=Host(`yourdomain.com`)"
+    # Traefik labels so Coolify automatically routes fennecom.com to this container
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`fennecom.com`, `www.fennecom.com`)"
+      - "traefik.http.services.portfolio.loadbalancer.server.port=3000"
