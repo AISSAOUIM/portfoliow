@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs-portfolio
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    # Traefik labels if Coolify uses Traefik (optional as Coolify manages this)
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.portfolio.rule=Host(`yourdomain.com`)"
