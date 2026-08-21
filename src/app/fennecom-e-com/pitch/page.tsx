@@ -473,23 +473,60 @@ export default function FennecomPitchPage() {
             <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 6 }}>Get in Touch</h3>
             <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginBottom: 24, lineHeight: 1.6 }}>Contact us to get started with a subscription or discuss a codebase purchase.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <a href="https://fennecom.com" target="_blank" rel="noopener noreferrer" className="contact-row">
-                <Globe style={{ width: 20, height: 20, color: "#4ade80" }} />
-                <div><p style={{ fontWeight: 600, fontSize: 14 }}>Portfolio</p><p style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>fennecom.com</p></div>
+              <a href="https://wa.me/213541467641?text=Hello%21%20I%20am%20interested%20in%20Fennecom%20SaaS." target="_blank" rel="noopener noreferrer" className="contact-row" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.3)" }}>
+                <MessageCircle style={{ width: 20, height: 20, color: "#25d366" }} />
+                <div><p style={{ fontWeight: 600, fontSize: 14, color: "#25d366" }}>WhatsApp Instant Chat</p><p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12 }}>+213 541 46 76 41</p></div>
               </a>
               <a href="https://mostaql.com" target="_blank" rel="noopener noreferrer" className="contact-row">
                 <MessageCircle style={{ width: 20, height: 20, color: "#fbbf24" }} />
                 <div><p style={{ fontWeight: 600, fontSize: 14 }}>Mostaql (مستقل)</p><p style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Send a project request directly</p></div>
               </a>
-              <div className="contact-row">
-                <Mail style={{ width: 20, height: 20, color: "#60a5fa" }} />
-                <div><p style={{ fontWeight: 600, fontSize: 14 }}>Business Inquiry</p><p style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Contact via portfolio form at fennecom.com</p></div>
-              </div>
+              <a href="https://fennecom.com" target="_blank" rel="noopener noreferrer" className="contact-row">
+                <Globe style={{ width: 20, height: 20, color: "#4ade80" }} />
+                <div><p style={{ fontWeight: 600, fontSize: 14 }}>Portfolio</p><p style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>fennecom.com</p></div>
+              </a>
             </div>
-            <p style={{ textAlign: "center", color: "rgba(255,255,255,0.2)", fontSize: 12, marginTop: 24 }}>Typical response time: under 24 hours</p>
+            <p style={{ textAlign: "center", color: "rgba(255,255,255,0.2)", fontSize: 12, marginTop: 24 }}>Typical response time: instant on WhatsApp</p>
           </div>
         </div>
       )}
+
+      {/* ── FLOATING WHATSAPP BUBBLE ── */}
+      <a
+        href="https://wa.me/213541467641?text=Hello%21%20I%20am%20interested%20in%20Fennecom%20SaaS."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        style={{
+          position: "fixed",
+          bottom: 24,
+          right: 24,
+          zIndex: 90,
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "12px 18px",
+          borderRadius: 100,
+          fontWeight: 700,
+          color: "#fff",
+          fontSize: 14,
+          background: "linear-gradient(135deg, #25d366 0%, #128c7e 100%)",
+          boxShadow: "0 8px 30px rgba(37,211,102,0.45)",
+          textDecoration: "none",
+          transition: "transform .2s, box-shadow .2s",
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.transform = "scale(1.08)";
+          e.currentTarget.style.boxShadow = "0 12px 36px rgba(37,211,102,0.6)";
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.transform = "none";
+          e.currentTarget.style.boxShadow = "0 8px 30px rgba(37,211,102,0.45)";
+        }}
+      >
+        <MessageCircle style={{ width: 22, height: 22 }} />
+        <span>WhatsApp Us</span>
+      </a>
     </>
   );
 }

@@ -67,7 +67,7 @@ function ContactModal({ open, onClose }: { open: boolean; onClose: () => void })
   const handleWhatsApp = () => {
     if (!name || !phone) { alert("Please enter your name and phone number"); return; }
     const text = "Hello! I am interested in Fennecom SaaS.\n\nName: " + name + "\nPhone: " + phone + "\nCity: " + city + "\nMessage: " + msg;
-    window.open("https://wa.me/213XXXXXXXX?text=" + encodeURIComponent(text), "_blank");
+    window.open("https://wa.me/213541467641?text=" + encodeURIComponent(text), "_blank");
   };
 
   return (
@@ -639,7 +639,7 @@ export default function PitchPage() {
                   Book Free Demo Now
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                <a href="https://wa.me/213XXXXXXXX" target="_blank" rel="noopener noreferrer" id="wa-btn"
+                <a href="https://wa.me/213541467641?text=Hello%21%20I%20am%20interested%20in%20Fennecom%20SaaS." target="_blank" rel="noopener noreferrer" id="wa-btn"
                   className="flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white text-base transition-all duration-300 hover:scale-105"
                   style={{ background: "linear-gradient(135deg, #25d366, #128c7e)", boxShadow: "0 0 30px rgba(37,211,102,0.3)" }}>
                   <MessageCircle className="w-5 h-5" /> WhatsApp Us
@@ -662,6 +662,24 @@ export default function PitchPage() {
             <a href="/" className="hover:text-white/70 transition-colors">← Back to Portfolio</a>
           </div>
         </footer>
+
+        {/* FLOATING WHATSAPP BUBBLE */}
+        <a
+          href="https://wa.me/213541467641?text=Hello%21%20I%20am%20interested%20in%20Fennecom%20SaaS."
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full font-bold text-white text-sm shadow-2xl transition-all duration-300 hover:scale-110 group"
+          style={{
+            background: "linear-gradient(135deg, #25d366 0%, #128c7e 100%)",
+            boxShadow: "0 8px 30px rgba(37,211,102,0.45)",
+          }}
+        >
+          <MessageCircle className="w-6 h-6 animate-pulse" />
+          <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out">
+            Chat on WhatsApp
+          </span>
+        </a>
       </main>
     </>
   );
