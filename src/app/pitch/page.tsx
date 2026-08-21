@@ -12,24 +12,24 @@ import {
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
-  show: (i = 0) => ({
+  show: (i: number = 0) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
   }),
 };
 
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.92 },
-  show: (i = 0) => ({
+  show: (i: number = 0) => ({
     opacity: 1, scale: 1,
-    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
   }),
 };
 
-function useCounter(target, duration = 2000) {
+function useCounter(target: number, duration = 2000) {
   const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref as any, { once: true });
 
   useEffect(() => {
     if (!inView) return;
@@ -46,7 +46,7 @@ function useCounter(target, duration = 2000) {
   return { count, ref };
 }
 
-function StatCard({ num, label, suffix = "", color }) {
+function StatCard({ num, label, suffix = "", color }: { num: number; label: string; suffix?: string; color: string }) {
   const { count, ref } = useCounter(num);
   return (
     <div className="glass-card rounded-2xl p-6 text-center">
@@ -58,7 +58,7 @@ function StatCard({ num, label, suffix = "", color }) {
   );
 }
 
-function ContactModal({ open, onClose }) {
+function ContactModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
@@ -153,7 +153,7 @@ const faqs = [
 export default function PitchPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeFaq, setActiveFaq] = useState(null);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -161,7 +161,7 @@ export default function PitchPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <>
